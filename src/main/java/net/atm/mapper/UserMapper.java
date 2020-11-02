@@ -7,7 +7,7 @@ import net.atm.model.user.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/*
 public class UserMapper implements RowMapper<User> {
 
 
@@ -15,4 +15,4 @@ public class UserMapper implements RowMapper<User> {
     public User map(ResultSet rs, StatementContext ctx) throws SQLException {
         return new User(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("password"), rs.getString("email"));
     }
-}
+}*/

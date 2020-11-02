@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Formatter;
 
-import net.atm.transactions.TransactionType;
+import net.atm.types.TransactionType;
 
 public class Transaction {
 	
@@ -14,17 +14,21 @@ public class Transaction {
 	
 	public String type;
 	
-	public LocalDate dateTime;
+	public LocalDateTime dateTime;
 	
 	public boolean transactionSuccess;
 	
 	public double transactionAmount;
+
+	private int accountId;
 	
-	public Transaction(int id, String type, double transactionAmount) {
+	public Transaction(int id, String type, boolean transactionSuccess, double transactionAmount, LocalDateTime dateTime, int accountId) {
 		this.id = id;
 		this.type = type.toString();
-		this.dateTime = LocalDate.now();
+		this.dateTime =  dateTime;
+		this.transactionSuccess = transactionSuccess;
 		this.transactionAmount = transactionAmount;
+		this.accountId = accountId;
 	}
 	
 	public int getId() {
@@ -35,7 +39,7 @@ public class Transaction {
 		return type;
 	}
 	
-	public LocalDate getDateTime() {
+	public LocalDateTime getDateTime() {
 		return dateTime;
 	}
 	
@@ -45,6 +49,10 @@ public class Transaction {
 	
 	public double getTransactionAmount() {
 		return transactionAmount;
+	}
+
+	public int getAccountId() {
+		return accountId;
 	}
 	
 	public void setId(int id) {
@@ -61,6 +69,14 @@ public class Transaction {
 
 	public void setTransactionAmount(double transactionAmount){
 		this.transactionAmount = transactionAmount;
+	}
+
+	public void setdateTime(LocalDateTime datetime){
+		this.dateTime = datetime;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
 	}
 
 	public String toString() {

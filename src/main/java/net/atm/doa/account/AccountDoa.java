@@ -15,7 +15,7 @@ public interface AccountDoa {
     " values(:id, :accountName, :accountType, :accountNum, :dateCreated, :balance)")
     void insertAccount(@BindBean Account account);
 
-    @SqlUpdate("update accounts set account_name=:accountName, balance=:balance where id=:id")
+    @SqlUpdate("update accounts set account_name=:accountName, account_type=:account_type, account_number=:account_number, balance=:balance where id=:id")
     void updateAccount(@BindBean Account account);
 
     @SqlUpdate("insert into account_transac(account_id, transac_id) values(?, ?)")

@@ -1,6 +1,7 @@
 package net.atm.model.user;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class User {
 	
@@ -9,15 +10,15 @@ public class User {
 	private String last_name;
 	private String password;
 	private String email;
-	private LocalDate date_created;
+	private LocalDateTime  dateCreated;
 	
-	public User(int id, String firstName, String lastName,String password, String email) {
+	public User(int id, String firstName, String lastName,String password, String email,LocalDateTime  dateCreated) {
 		this.id = id;
 		this.first_name = firstName;
 		this.last_name = lastName;
 		this.password = password;
 		this.email = email;
-		this.date_created = LocalDate.now();
+		this.dateCreated = dateCreated;
 	}
 	
 	public int getId() {
@@ -40,8 +41,8 @@ public class User {
 		return email;
 	}
 	
-	public LocalDate getDateCreated() {
-		return date_created;
+	public LocalDateTime getDateCreated() {
+		return dateCreated;
 	}
 	
 	public void setFirstName(String firstName) {
@@ -58,5 +59,9 @@ public class User {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void setDateCreated(LocalDateTime dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 }

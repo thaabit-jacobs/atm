@@ -1,14 +1,11 @@
 package net.atm.transactions.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Formatter;
 
-import net.atm.account.Account;
-import net.atm.transactions.TransactionType;
-import net.atm.types.AccountType;
+import net.atm.types.*;
 
 public class Transaction {
 	

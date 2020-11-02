@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalTime;
 
-import net.atm.model.Account;
-import net.atm.model.Transaction;
-
+/*
 public class Printer {
 
     public static void createReceipt(Account a, Transaction t)
@@ -24,4 +22,4 @@ public class Printer {
             e.printStackTrace();
         }
     }
-}
+}*/

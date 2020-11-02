@@ -1,10 +1,5 @@
 package net.atm.transactions;
 
-import java.time.LocalDate;
-import java.util.Formatter;
-
-import net.atm.account.Account;
-
 public class TransactSession {
 	/*
 	 * 	public Transaction(Account account) {

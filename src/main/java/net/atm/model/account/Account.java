@@ -1,6 +1,7 @@
 package net.atm.model.account;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import net.atm.account.AccountSupport;
 import net.atm.types.AccountType;
@@ -15,18 +16,18 @@ public class Account {
 	
 	public int accountNum;
 	
-	public LocalDate dateCreated;
-	
 	public double balance;
 
+	public LocalDateTime dateCreated;
+
 	
-	public Account(int id, String accountName, String type, double balance) {
+	public Account(int id, String accountName, String accountType, int accountNum, double balance, LocalDateTime dateCreated) {
 		this.id = id;
 		this.accountName = accountName;
-		this.accountType = type.toString();
-		this.dateCreated = LocalDate.now();
-		this.accountNum = new AccountSupport().generateAccountNum();
+		this.accountType = accountType.toString();
+		this.accountNum =  accountNum;
 		this.balance = balance;
+		this.dateCreated = dateCreated;
 	}
 	
 	public int getId() {
@@ -45,7 +46,7 @@ public class Account {
 		return accountNum;
 	}
 	
-	public LocalDate getDateCreated() {
+	public LocalDateTime getDateCreated() {
 		return dateCreated;
 	}
 	
@@ -73,7 +74,7 @@ public class Account {
 		this.accountNum = accountNum;
 	}
 
-	public void setDateCreated(LocalDate dateCreated){
+	public void setDateCreated(LocalDateTime dateCreated){
 		this.dateCreated = dateCreated;
 	}
 
