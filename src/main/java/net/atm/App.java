@@ -1,5 +1,8 @@
 package net.atm;
 
+import net.atm.controller.UserController;
+import net.atm.service.user.UserService;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,23 +11,7 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        boolean f = false;
-        while(f){
-
-        }
+        new UserController(new UserService());
     }
 
-}
-
-class a{
-    public a()throws IOException{
-
-    }
-}
-
-
-class b extends a{
-    public b()throws Exception{
-
-    }
 }

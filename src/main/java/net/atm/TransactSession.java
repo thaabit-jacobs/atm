@@ -1,4 +1,4 @@
-package net.atm.transactions;
+package net.atm;
 
 public class TransactSession {
 	/*

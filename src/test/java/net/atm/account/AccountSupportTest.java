@@ -2,6 +2,7 @@ package net.atm.account;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import net.atm.AccountSupport;
 import org.junit.jupiter.api.Test;
 
 class AccountSupportTest {

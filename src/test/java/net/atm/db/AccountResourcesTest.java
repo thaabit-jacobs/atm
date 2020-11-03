@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import net.atm.account.AccountSupport;
+import net.atm.AccountSupport;
 import net.atm.types.AccountType;
 /*
 public class AccountResourcesTest {

@@ -1,9 +1,4 @@
-package net.atm.transactions.printer;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.LocalTime;
+package net.atm.printer;
 
 /*
 public class Printer {

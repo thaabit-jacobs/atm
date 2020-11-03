@@ -1,4 +1,4 @@
-package net.atm.account;
+package net.atm;
 
 import java.util.Random;
 

@@ -1,9 +1,7 @@
 package net.atm.model.account;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import net.atm.account.AccountSupport;
 import net.atm.types.AccountType;
 
 public class Account {
