@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.atm.doa.account.*;
 import net.atm.model.account.Account;
+import net.atm.model.transaction.Transaction;
 
 public class AccountService {
 
@@ -21,10 +22,6 @@ public class AccountService {
     adi.updateAccount(account);
     }
 
-    public void insertAccountTransac(int accountId, int transacId){
-      adi.insertAccountTransac(accountId, transacId);
-     }
-
      public void deleteAccount(int id) {
         adi.deleteAccount(id);
     }
@@ -35,5 +32,9 @@ public class AccountService {
 
      public Account selectAccount(int id) {
         return adi.selectAccount(id);
+     }
+
+     public List<Transaction> selectAllAccountTransac(int i){
+        return adi.selectAllAccountTransacs(i);
      }
 }

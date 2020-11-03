@@ -11,7 +11,7 @@ import net.atm.model.transaction.Transaction;
 
 public interface TransaxDoa {
 
-    @SqlUpdate("insert into transactions (id, transac_type, date_time, transaction_success, transaction_amount) values(:id, :type, :dateTime, :transactionSuccess, :transactionAmount)")
+    @SqlUpdate("insert into transactions (id, transac_type, date_time, transaction_success, transaction_amount, account_id) values(:id, :type, :dateTime, :transactionSuccess, :transactionAmount, :accountId)")
     void insertTransac(@BindBean Transaction transac);
 
     @SqlUpdate("update transactions set transac_type=:type, date_time=:dateTime, transaction_success=:transactionSuccess, transaction_amount=:transactionAmount where id=:id")

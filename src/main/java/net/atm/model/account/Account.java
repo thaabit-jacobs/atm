@@ -8,26 +8,28 @@ import net.atm.types.AccountType;
 
 public class Account {
 	
-	public  int id;
-	
-	public String accountName;
-	
-	public String accountType;
-	
-	public int accountNum;
-	
-	public double balance;
+	private  int id;
 
-	public LocalDateTime dateCreated;
+	private String accountName;
 
-	
-	public Account(int id, String accountName, String accountType, int accountNum, double balance, LocalDateTime dateCreated) {
+	private String accountType;
+
+	private int accountNum;
+
+	private double balance;
+
+	private LocalDateTime dateCreated;
+
+	private int userId;
+
+	public Account(int id, String accountName, String accountType, int accountNum, double balance, LocalDateTime dateCreated, int userId) {
 		this.id = id;
 		this.accountName = accountName;
 		this.accountType = accountType.toString();
 		this.accountNum =  accountNum;
 		this.balance = balance;
 		this.dateCreated = dateCreated;
+		this.userId = userId;
 	}
 	
 	public int getId() {
@@ -52,6 +54,10 @@ public class Account {
 	
 	public double getBalance() {
 		return balance;
+	}
+
+	public int getUserId() {
+		return userId;
 	}
 	
 	public void setId(int id) {
@@ -78,4 +84,19 @@ public class Account {
 		this.dateCreated = dateCreated;
 	}
 
+	public void setUserId(int userId){
+		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "Account{" +
+				"id=" + id +
+				", accountName='" + accountName + '\'' +
+				", accountType='" + accountType + '\'' +
+				", accountNum=" + accountNum +
+				", balance=" + balance +
+				", dateCreated=" + dateCreated +
+				'}';
+	}
 }

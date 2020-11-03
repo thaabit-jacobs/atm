@@ -16,7 +16,7 @@ public class TransacDoaImpl implements TransaxDoa {
     private  final Jdbi  jdbi = Jdbi.create("jdbc:postgresql://localhost:5432/bank", "thaabit", "1234");
 
     public TransacDoaImpl(){
-       // jdbi.installPlugin((JdbiPlugin) new SqlObjectPlugin());
+       jdbi.installPlugin((JdbiPlugin) new SqlObjectPlugin());
     }
     @Override
     public void insertTransac(Transaction transac) {
@@ -47,7 +47,16 @@ public class TransacDoaImpl implements TransaxDoa {
 
     public static void main(String[] args) {
         TransacDoaImpl c = new TransacDoaImpl();
-        //c.insertTransac(new Transaction(1, TransactionType.Deposit.toString(), true, 0.00, LocalDateTime.now(), 1));
+        Transaction tran = c.selectTransac(2);
+        tran.setTransactionSuccess(true);
+        c.updateTransac(tran);
+
+        c.deleteTransac(2);
+
+        System.out.println(c.selectAllTransac());
+
+
+
     }
 
 }

@@ -4,5 +4,7 @@ create table if not exists accounts(
 	account_type varchar(225) not null,
 	account_number int not null,
 	balance decimal(10, 2) not null,
-	date_created timestamp not null
+	date_created timestamp not null,
+	user_id int not null,
+	foreign key (user_id) references users(id)
 );

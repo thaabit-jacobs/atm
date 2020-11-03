@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import net.atm.model.transaction.Transaction;
 import net.atm.types.AccountType;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
@@ -31,10 +32,6 @@ public class AccountDoaImpl implements AccountDoa {
          jdbi.useExtension(AccountDoa.class, doa -> doa.updateAccount(account));
      }
 
-     public void insertAccountTransac(int accountId, int transacId){
-        jdbi.useExtension(AccountDoa.class, doa -> doa.insertAccountTransac(accountId, transacId));
-     }
-
      @Override
      public void deleteAccount(int id) {
          jdbi.useExtension(AccountDoa.class, doa -> doa.deleteAccount(id));
@@ -42,19 +39,21 @@ public class AccountDoaImpl implements AccountDoa {
 
      @Override
      public List<Account> selectAllAccounts() {
-        jdbi.registerRowMapper(Account.class, (rs, ctx) -> new Account(rs.getInt("id"), rs.getString("account_name"), rs.getString("account_type"), rs.getInt("account_number"), rs.getDouble("balance"), new Timestamp(rs.getDate("date_time").getTime()).toLocalDateTime()));
+        jdbi.registerRowMapper(Account.class, (rs, ctx) -> new Account(rs.getInt("id"), rs.getString("account_name"), rs.getString("account_type"), rs.getInt("account_number"), rs.getDouble("balance"), new Timestamp(rs.getDate("date_created").getTime()).toLocalDateTime(), rs.getInt("user_id")));
          return jdbi.withExtension(AccountDoa.class, doa -> doa.selectAllAccounts());
      }
 
      
      @Override
      public Account selectAccount(int id) {
-        jdbi.registerRowMapper(Account.class, (rs, ctx) -> new Account(rs.getInt("id"), rs.getString("account_name"), rs.getString("account_type"), rs.getInt("account_number"),rs.getDouble("balance"), new Timestamp(rs.getDate("date_time").getTime()).toLocalDateTime()));
+        jdbi.registerRowMapper(Account.class, (rs, ctx) -> new Account(rs.getInt("id"), rs.getString("account_name"), rs.getString("account_type"), rs.getInt("account_number"),rs.getDouble("balance"), new Timestamp(rs.getDate("date_created").getTime()).toLocalDateTime(), rs.getInt("user_id")));
          return jdbi.withExtension(AccountDoa.class, doa -> doa.selectAccount(id));
      }
 
-    public static void main(String[] args) {
-        AccountDoaImpl adi = new AccountDoaImpl();
-        adi.insertAccount(new Account(1, "savings plan", AccountType.SavingsAccount.toString(), 144586795, 0.00, LocalDateTime.now()));
+    @Override
+    public List<Transaction> selectAllAccountTransacs(int id) {
+        jdbi.registerRowMapper(Transaction.class, (rs, ctx) -> new Transaction(rs.getInt("id"), rs.getString("transac_type"), rs.getBoolean("transaction_success"), rs.getDouble("transaction_amount"),  new Timestamp(rs.getDate("date_time").getTime()).toLocalDateTime(), rs.getInt("account_id")));
+        return jdbi.withExtension(AccountDoa.class, doa -> doa.selectAllAccountTransacs(id));
     }
+
 }

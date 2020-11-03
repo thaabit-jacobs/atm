@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.atm.doa.user.*;
 import net.atm.doa.user.UserDoa;
+import net.atm.model.account.Account;
 import net.atm.model.user.User;
 
 public class UserService {
@@ -22,10 +23,6 @@ public class UserService {
         udi.updateUser(user);
     }
 
-    public void insertUserAccount(int userId, int accountId){
-        udi.insertUserAccount(userId, accountId);
-    }
-
     public User selectUser(int id) {
         return udi.selectUser(id);
     }
@@ -36,5 +33,9 @@ public class UserService {
 
     public void deleteUser(int id) {
         udi.deleteUser(id);
+    }
+
+    public List<Account> selectAllUsersAccount(int id){
+        return udi.selectAllUserAccounts(id);
     }
 }

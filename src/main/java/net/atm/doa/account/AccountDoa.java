@@ -1,5 +1,6 @@
 package net.atm.doa.account;
 
+import net.atm.model.transaction.Transaction;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
@@ -11,23 +12,23 @@ import java.util.List;
 
 public interface AccountDoa {
 
-    @SqlUpdate("insert into accounts(id, account_name, account_type, account_number, date_created, balance)" + 
-    " values(:id, :accountName, :accountType, :accountNum, :dateCreated, :balance)")
+    @SqlUpdate("insert into accounts(id, account_name, account_type, account_number, date_created, balance, user_id)" +
+    " values(:id, :accountName, :accountType, :accountNum, :dateCreated, :balance, :userId)")
     void insertAccount(@BindBean Account account);
 
     @SqlUpdate("update accounts set account_name=:accountName, account_type=:account_type, account_number=:account_number, balance=:balance where id=:id")
     void updateAccount(@BindBean Account account);
 
-    @SqlUpdate("insert into account_transac(account_id, transac_id) values(?, ?)")
-    void insertAccountTransac(int accountId, int transacId);
-
     @SqlUpdate("delete from accounts where id=:id")
     void deleteAccount(@Bind("id") int id);
 
-    @SqlQuery("select * from accounts")
+    @SqlQuery("select id, account_name, account_type, account_number, balance, date_created, user_id from accounts")
     List<Account> selectAllAccounts(); 
 
-    @SqlQuery("select * from accounts where id=:id")
-    Account selectAccount(@Bind("id")int id); 
-    
+    @SqlQuery("select id, account_name, account_type, account_number, balance, date_created, user_id from accounts where id=:id")
+    Account selectAccount(@Bind("id")int id);
+
+    @SqlQuery("select * from transactions where account_id=:id")
+    List<Transaction> selectAllAccountTransacs(@Bind("id") int id);
+
 }

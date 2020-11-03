@@ -79,14 +79,14 @@ public class Transaction {
 		this.accountId = accountId;
 	}
 
+	@Override
 	public String toString() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
-		Formatter f = new Formatter();
-
-		String receipt = f.format("Transaction type: %s \nTransanction amount: R%.2f \nTransanction sucess: %b \nDate: %s", type.toString(), transactionAmount, transactionSuccess, formatter.format(dateTime)).toString();
-		
-		f.close();
-		
-		return receipt;
+		return "Transaction{" +
+				"id=" + id +
+				", type='" + type + '\'' +
+				", dateTime=" + dateTime +
+				", transactionSuccess=" + transactionSuccess +
+				", transactionAmount=" + transactionAmount +
+				'}';
 	}
 }

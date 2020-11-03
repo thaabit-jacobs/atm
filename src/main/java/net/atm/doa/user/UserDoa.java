@@ -1,5 +1,6 @@
 package net.atm.doa.user;
 
+import net.atm.model.account.Account;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.customizer.BindFields;
@@ -21,8 +22,8 @@ public interface UserDoa{
     @SqlUpdate("update users set first_name=:firstName, last_name=:lastName, password=:password, email=:email where id=:id" )
     void updateUser(@BindBean User user);
 
-    @SqlUpdate("insert into user_account(user_id, account_id) values(?, ?)")
-    void insertUserAccount(int userId, int accountId);
+    @SqlUpdate("delete from users where id=:id")
+    void deleteUser(@Bind("id") int id);
 
     @SqlQuery("select * from users where id=:id")
     User selectUser(@Bind("id") int id);
@@ -30,6 +31,8 @@ public interface UserDoa{
     @SqlQuery("select * from users")
     List<User> selectAllUser();
 
-    @SqlUpdate("delete from users where id=:id")
-    void deleteUser(@Bind("id") int id);
+    @SqlQuery("select * from accounts where user_id=:id")
+    List<Account> selectAllUserAccounts(@Bind("id") int id);
+
+
 }

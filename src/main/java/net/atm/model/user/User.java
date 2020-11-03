@@ -64,4 +64,16 @@ public class User {
 	public void setDateCreated(LocalDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", first_name='" + first_name + '\'' +
+				", last_name='" + last_name + '\'' +
+				", password='" + password + '\'' +
+				", email='" + email + '\'' +
+				", dateCreated=" + dateCreated +
+				'}';
+	}
 }
