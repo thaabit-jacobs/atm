@@ -8,5 +8,11 @@ import net.atm.service.user.UserService;
 public class UserController {
     public UserController(final UserService userService){
         get("/users", (request, response) -> userService.selectAllUser(), json());
+
+        get("/users/:id", (request, response) -> {
+            return userService.selectUser(Integer.valueOf(request.params(":id")).intValue());
+        }, json());
+
+        get("/users/accounts/:id", (request, response) -> userService.selectAllUsersAccount(Integer.valueOf(request.params(":id")).intValue()), json());
     }
 }

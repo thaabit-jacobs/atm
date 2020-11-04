@@ -1,5 +1,6 @@
 package net.atm;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import spark.ModelAndView;
@@ -16,5 +17,11 @@ public class Atm {
     
     public static void main(String[] args){
         staticFiles.location("/public");
+
+        get("/", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            return  render(model, "index.hbs");
+        }));
     }
 }
