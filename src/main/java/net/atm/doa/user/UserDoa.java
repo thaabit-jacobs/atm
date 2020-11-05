@@ -33,6 +33,4 @@ public interface UserDoa{
 
     @SqlQuery("select * from accounts where user_id=:id")
     List<Account> selectAllUserAccounts(@Bind("id") int id);
-
-
 }

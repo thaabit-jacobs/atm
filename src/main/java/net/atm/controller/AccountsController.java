@@ -3,12 +3,11 @@ package net.atm.controller;
 import net.atm.service.account.AccountService;
 import net.atm.service.user.UserService;
 
-import static net.atm.util.JsonUtil.json;
 import static spark.Spark.get;
 
 public class AccountsController {
     public AccountsController(final AccountService accountService){
-        get("/accounts/transactions/:id", (request, response) -> accountService.selectAllAccountTransac(Integer.valueOf(request.params(":id")).intValue()), json());
+        //get("/accounts/transactions/:id", (request, response) -> accountService.selectAllAccountTransac(Integer.valueOf(request.params(":id")).intValue()), json());
 
     }
 }
