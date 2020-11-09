@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>ATM</title>
+</head>
+</head>
+<body>
+<header class="primary-header container group">
+    <section class="container">
+        <h1 class="logo">
+            <a href="/"> ATM </a>
+        </h1>
+
+        <h1 class="logo-bill">
+            <a href="/accounts"> Accounts </a>
+        </h1>
+
+        <h1 class="logo-bill">
+            <a href="/transactions"> Transactions </a>
+        </h1>
+    </section>
+</header>
+
+<section class="row">
+    <div class="grid">
+
+        
+        <section class="teaser col-3-3">
+
+            <p>R{{balance}}</p>
+
+            <form action="/login" method="post">
+                {{#each accountsList}}
+                <input type="radio" name={{this.accountName}} value={{this.accountName}} class="btn">
+                {{this.accountName}}
+                {{/each}}
+                <br><input class="btn" type="submit" name="submit" value="submit"/> 
+                </form>
+
+        </section>
+       
+        </div>   
+    </section>
+
+
+<footer class="primary-footer container group">
+    <small>&copy; T&J'S</small>
+</footer>
+</body>
+</html>

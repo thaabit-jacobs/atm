@@ -31,6 +31,12 @@ public interface UserDoa{
     @SqlQuery("select * from users")
     List<User> selectAllUser();
 
+    @SqlQuery("select * from accounts where id=:id and user_id=:userId")
+    Account selectUserAccount(@Bind("id") int id,@Bind("userId") int userId);
+
     @SqlQuery("select * from accounts where user_id=:id")
     List<Account> selectAllUserAccounts(@Bind("id") int id);
+
+    @SqlQuery("select * from users where email=:email and password=:password")
+    User selectUserIfExist(@Bind("email") String email, @Bind("password") String password);
 }

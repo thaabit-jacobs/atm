@@ -31,4 +31,5 @@ public interface AccountDoa {
     @SqlQuery("select * from transactions where account_id=:id")
     List<Transaction> selectAllAccountTransacs(@Bind("id") int id);
 
+
 }

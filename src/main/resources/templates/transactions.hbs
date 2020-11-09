@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>ATM</title>
+</head>
+</head>
+<body>
+<header class="primary-header container group">
+    <section class="container">
+        <h1 class="logo">
+            <a href="/"> ATM </a>
+        </h1>
+
+        <h1 class="logo-bill">
+            <a href="/form"> Add </a>
+        </h1>
+
+        <h1 class="logo-bill">
+            <a href="/stats"> Stats </a>
+        </h1>
+    </section>
+</header>
+
+<section class="row">
+    <div class="grid">
+
+        
+        <section class="teaser col-3-3">
+
+            <form action="/exercise" method="post">
+
+                <fieldset>
+                    <legend>Filter:</legend>
+                    <label for="firstDate">First date:</label>
+                    <input required="required" type="date" name="firstDate"/>
+
+                    <label for="secondDate">Second date:</label>
+                    <input required="required" type="date" name="secondDate"/>
+
+                    <br><input class="btn" type="submit" name="submit" value="submit"/> 
+                </fieldset>
+
+                </form>
+
+                <h2 class="Result"></h2>
+
+                <table>
+                    <thead>
+                    <tr class="even">
+                            <th scope="col">transac_type</th>
+                            <th scope="col">date_time </th>
+                            <th scope="col">transaction_success</th>
+                            <th scope="col">transaction_amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>withdrowal</td>
+                            <td>2010-05-11</td>
+                            <td>true</td>
+                            <td>200.50</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+        </section>
+       
+        </div>   
+    </section>
+
+
+<footer class="primary-footer container group">
+    <small>&copy; T&J'S</small>
+</footer>
+</body>
+</html>

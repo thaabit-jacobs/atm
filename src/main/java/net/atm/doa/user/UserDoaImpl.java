@@ -38,6 +38,12 @@ public class UserDoaImpl implements UserDoa {
     }
 
     @Override
+    public Account selectUserAccount(int id,int userId){
+        jdbi.registerRowMapper(Account.class, (rs, ctx) -> new Account(rs.getInt("id"), rs.getString("account_name"), rs.getString("account_type"), rs.getInt("account_number"), rs.getDouble("balance"), new Timestamp(rs.getDate("date_created").getTime()).toLocalDateTime(), rs.getInt("user_id")));
+       return jdbi.withExtension(UserDoa.class, doa -> doa.selectUserAccount(id, userId));
+    }
+
+    @Override
     public User selectUser(int id) {
         jdbi.registerRowMapper(User.class, (rs, ctx) -> new User(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("password"), rs.getString("email"), new Timestamp(rs.getDate("date_created").getTime()).toLocalDateTime()));
         return jdbi.withExtension(UserDoa.class, doa -> doa.selectUser(id));
@@ -52,5 +58,11 @@ public class UserDoaImpl implements UserDoa {
     @Override
     public void deleteUser(int id) {
         jdbi.useExtension(UserDoa.class, doa -> doa.deleteUser(id));
+    }
+
+    @Override
+    public User selectUserIfExist(String email, String password){
+        jdbi.registerRowMapper(User.class, (rs, ctx) -> new User(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("password"), rs.getString("email"), new Timestamp(rs.getDate("date_created").getTime()).toLocalDateTime()));
+        return jdbi.withExtension(UserDoa.class, doa -> doa.selectUserIfExist(email, password));
     }
 }

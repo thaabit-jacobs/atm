@@ -14,13 +14,18 @@ import net.atm.types.TransactionType;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import static spark.Spark.*;
+
 public class MainDemo {
     public static void main(String[] args) {
+      
         UserService us = new UserService();
-          AccountService as = new AccountService();
+        AccountService as = new AccountService();
         TransactionService ts = new TransactionService();
 
-    //    us.insertUser(new User(3, "Bill", "Swarts", "0000", "swarts@java.com", LocalDateTime.now()));
+      // us.insertUser(new User(1, "Bill", "Swarts", "0000", "swarts@java.com", LocalDateTime.now()));
+       //us.insertUser(new User(2, "Thaabit", "Jacobs", "0000", "thaabit@java.com", LocalDateTime.now()));
+       //us.insertUser(new User(3, "Bill", "Gates", "0000", "gates@apple.com", LocalDateTime.now()));
       //  as.insertAccount(new Account(3, "savings", AccountType.SavingsAccount.toString(), 144857895, 0.00, LocalDateTime.now(), 3));
        // ts.insertTransac(new Transaction(2, TransactionType.BalanceEnquiry.toString(), false, 0.00, LocalDateTime.now(), 3));
 
