@@ -24,6 +24,10 @@ public class StandardResponse {
         this.data = data;
     }
 
+    public StandardResponse(JsonElement data) {
+        this.data = data;
+    }
+
     public StatusResponse getStatus() {
         return status;
     }

@@ -167,11 +167,11 @@ cite, em {
 */
 
 a:hover{
-    color: #ffb752;
+    color: #fff;
   }
   
   a {
-    color: #ba7f50;
+    color: #3693;
     text-decoration: none;
   }
   
@@ -288,7 +288,7 @@ a:hover{
     display: inline-block;
     font-weight: 400;
     letter-spacing: .5px;
-    margin: 10px 0 0 0;
+    margin: 25px 2px 5px 2px;
     text-transform: uppercase;
   }
 
@@ -480,9 +480,7 @@ form h3 {
 input{
     border: 1px solid #76d3f3;
     border-radius: 5px;
-    width: 150px;
-    height: 30px;
-    margin: 10px 15px 15px 0;
+    margin: 10px 2px 5px 15px;
 }
 
 input:hover {
@@ -492,6 +490,8 @@ input:hover {
 label{
   color: #3693b1;
   font-size: 16px;
-  padding-right: 5px;
+  padding: 10px 20px;
+  border: 1px solid #76d3f3;
+   border-radius: 5px;
+   font-size: 20px;
 }
-

@@ -2,10 +2,13 @@ package net.atm.controller;
 
 import static spark.Spark.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
+import net.atm.model.account.Account;
 import net.atm.model.user.User;
 import net.atm.service.user.UserService;
 import net.atm.types.StatusResponse;
@@ -60,15 +63,47 @@ public class UserController {
 
             int userId = Integer.valueOf(request.params(":id")).intValue();
 
+            List<Account> accountsList = userService.selectAllUsersAccount(userId);
+            List<Integer> accountsNUmList = new ArrayList<>();
 
-            model.put("accountsList", new Gson().toJsonTree(userService.selectAllUsersAccount(userId)));
+            for(Account acc: accountsList)
+                accountsNUmList.add(acc.getAccountNum());
+
+            model.put("accountsList", accountsNUmList);
+            model.put("userId", userId);
             return render(model, "UserDashBoard.hbs");
         });
 
         get("/users/accounts/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            int userId = request.url().charAt(request.url().length() - 1);
+
+            System.out.println(userService.selectUser(2).getFirstName());
+
+            List<Account> accountsList = userService.selectAllUsersAccount(userId);
+            List<Integer> accountsNUmList = new ArrayList<>();
+
+            for(Account acc: accountsList)
+                accountsNUmList.add(acc.getAccountNum());
+
+            model.put("accountNumLIst", accountsNUmList);
+
+            return render(model, "accounts.hbs");
+        });
+
+        get("/users/account/:id/:accountId", (request, response) -> {
             response.type("application/json");
 
-            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(userService.selectAllUsersAccount(Integer.valueOf(request.params(":id"))))));
+            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(userService.selectAUserAccount(Integer.valueOf(request.params(":id")), Integer.valueOf(request.params(":accountId"))))));
+        });
+
+        get("/users/account/:id/:accountId/balance", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            //return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(userService.selectAUserAccount(Integer.valueOf(request.params(":id")), Integer.valueOf(request.params(":accountId"))))));
+
+            return render(model, "UserDashBoard.hbs");
         });
 
         put("/users/:id", (request, response) -> {
@@ -83,6 +118,23 @@ public class UserController {
                 return new Gson().toJson(new StandardResponse(StatusResponse.ERROR, new Gson().toJson("Unable to edit user")));
             }
         });
+
+        get("/balance", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            List<Account> accountsList = userService.selectAllUsersAccount(2);
+            List<Integer> accountsNUmList = new ArrayList<>();
+
+            for(Account acc: accountsList)
+                accountsNUmList.add(acc.getAccountNum());
+
+            model.put("accountNumLIst", accountsNUmList);
+            return render(model, "accounts.hbs");
+        });
+
+
+
+
 
 
     }
